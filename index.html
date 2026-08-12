@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clayworld — Desain yang Terasa Nyata</title>
+  <meta name="description" content="Clayworld adalah platform kreatif dengan estetika claymorphism yang membawa kesenangan dan kelembutan ke dalam dunia digital Anda." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="hsl(200, 85%, 78%)" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Clayworld — Desain yang Terasa Nyata" />
+  <meta property="og:description" content="Platform kreatif dengan estetika claymorphism yang membawa kesenangan ke dunia digital." />
+  <meta property="og:image" content="/assets/clay_hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Clayworld" />
+  <meta name="twitter:description" content="Platform kreatif dengan estetika claymorphism." />
+  <meta name="twitter:image" content="/assets/clay_hero.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-clay">🧸</span>
+        <span class="logo-text">Clayworld</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Fitur</a></li>
+        <li><a href="#gallery" class="nav-link">Galeri</a></li>
+        <li><a href="#testimonials" class="nav-link">Review</a></li>
+        <li><a href="#cta" class="nav-cta-btn">Mulai Gratis</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#features" class="mob-link">Fitur</a></li>
+      <li><a href="#gallery" class="mob-link">Galeri</a></li>
+      <li><a href="#testimonials" class="mob-link">Review</a></li>
+      <li><a href="#cta" class="mob-link">Mulai Gratis</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">✨ Selamat datang di dunia clay</div>
+      <h1 class="hero-title">Desain yang <span class="accent-text">Terasa Nyata</span> &amp; Menyenangkan</h1>
+      <p class="hero-desc">Clayworld menghadirkan keindahan claymorphism yang lembut, bulat, dan penuh warna ke dalam karya digital Anda. Buat, eksplorasi, dan nikmati.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="clay-btn btn-primary" id="hero-cta-btn">
+          <span>Mulai Sekarang</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#features" class="clay-btn btn-secondary" id="hero-learn-btn">Pelajari Lebih</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">12K+</span>
+          <span class="stat-label">Pengguna Aktif</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Kepuasan</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Aset Clay</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrapper">
+        <img src="assets/clay_hero.jpg" alt="Clay shapes floating" class="hero-img" id="hero-img" />
+        <div class="floating-badge badge-top">
+          <span class="badge-icon">⭐</span>
+          <span>4.9 Rating</span>
+        </div>
+        <div class="floating-badge badge-bottom">
+          <span class="badge-icon">🎨</span>
+          <span>500+ Aset</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE / TICKER -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>🌿 Claymorphism</span>
+      <span>✦ Soft Design</span>
+      <span>🎨 Pastel Colors</span>
+      <span>🫧 3D Clay</span>
+      <span>🌸 Aesthetic</span>
+      <span>⭐ Premium Assets</span>
+      <span>🧸 Cute UI</span>
+      <span>💫 Creative Tools</span>
+      <span>🌿 Claymorphism</span>
+      <span>✦ Soft Design</span>
+      <span>🎨 Pastel Colors</span>
+      <span>🫧 3D Clay</span>
+      <span>🌸 Aesthetic</span>
+      <span>⭐ Premium Assets</span>
+      <span>🧸 Cute UI</span>
+      <span>💫 Creative Tools</span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <p class="section-label">Kenapa Clayworld?</p>
+      <h2 class="section-title">Semua yang Kamu Butuhkan</h2>
+      <p class="section-desc">Dari aset siap pakai hingga tools kreatif — semuanya hadir dalam estetika clay yang memikat.</p>
+    </div>
+    <div class="features-grid">
+      <div class="clay-card feature-card" id="feat-1">
+        <div class="feature-icon-wrap" style="background: hsl(200, 90%, 88%);">
+          <img src="assets/clay_laptop.png" alt="Laptop clay icon" class="feat-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+          <span class="feat-emoji" style="display:none;">💻</span>
+        </div>
+        <h3 class="feature-title">Desain Responsif</h3>
+        <p class="feature-desc">Tampilan yang indah di semua perangkat. Tidak peduli layar kecil atau besar, clay tetap terasa lembut dan hangat.</p>
+        <div class="feature-tag">Web & Mobile</div>
+      </div>
+      <div class="clay-card feature-card featured" id="feat-2">
+        <div class="feature-icon-wrap" style="background: hsl(340, 85%, 88%);">
+          <span class="feat-emoji">🎨</span>
+        </div>
+        <h3 class="feature-title">500+ Aset Clay</h3>
+        <p class="feature-desc">Koleksi lengkap ilustrasi, ikon, dan komponen UI dalam gaya claymorphism yang siap langsung pakai.</p>
+        <div class="feature-tag featured-tag">Terpopuler ✦</div>
+      </div>
+      <div class="clay-card feature-card" id="feat-3">
+        <div class="feature-icon-wrap" style="background: hsl(150, 80%, 82%);">
+          <span class="feat-emoji">⚡</span>
+        </div>
+        <h3 class="feature-title">Mudah Dikustomisasi</h3>
+        <p class="feature-desc">Ubah warna, ukuran, dan bentuk sesuai kebutuhan brand kamu hanya dalam beberapa klik.</p>
+        <div class="feature-tag">No-Code Ready</div>
+      </div>
+      <div class="clay-card feature-card" id="feat-4">
+        <div class="feature-icon-wrap" style="background: hsl(50, 95%, 85%);">
+          <span class="feat-emoji">🛡️</span>
+        </div>
+        <h3 class="feature-title">Lisensi Bebas Pakai</h3>
+        <p class="feature-desc">Semua aset berlisensi komersial. Gunakan untuk proyek personal maupun bisnis tanpa khawatir.</p>
+        <div class="feature-tag">Free License</div>
+      </div>
+      <div class="clay-card feature-card" id="feat-5">
+        <div class="feature-icon-wrap" style="background: hsl(270, 80%, 88%);">
+          <span class="feat-emoji">🌈</span>
+        </div>
+        <h3 class="feature-title">Palet Warna Kurasi</h3>
+        <p class="feature-desc">Koleksi palet warna pastel yang sudah dikurasi oleh desainer profesional untuk tampilan yang harmonis.</p>
+        <div class="feature-tag">50+ Palet</div>
+      </div>
+      <div class="clay-card feature-card" id="feat-6">
+        <div class="feature-icon-wrap" style="background: hsl(20, 90%, 85%);">
+          <span class="feat-emoji">🤝</span>
+        </div>
+        <h3 class="feature-title">Komunitas Aktif</h3>
+        <p class="feature-desc">Bergabung dengan ribuan desainer kreatif. Berbagi karya, dapatkan feedback, dan tumbuh bersama.</p>
+        <div class="feature-tag">12K+ Members</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY / SHOWCASE -->
+  <section class="gallery" id="gallery">
+    <div class="section-header">
+      <p class="section-label">Galeri Karya</p>
+      <h2 class="section-title">Keindahan dalam Setiap Bentuk</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card clay-card tall" id="gal-1">
+        <img src="assets/clay_hero.jpg" alt="Clay shapes collection" />
+        <div class="gal-overlay">
+          <span>Clay Shapes</span>
+        </div>
+      </div>
+      <div class="gallery-card clay-card" id="gal-2">
+        <img src="assets/clay_character.jpg" alt="Clay character" />
+        <div class="gal-overlay">
+          <span>Clay Character</span>
+        </div>
+      </div>
+      <div class="gallery-card clay-card wide" id="gal-3">
+        <img src="assets/clay_icons.jpg" alt="Clay icon set" />
+        <div class="gal-overlay">
+          <span>Clay Icon Set</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-header">
+      <p class="section-label">Yang Mereka Bilang</p>
+      <h2 class="section-title">Dicintai oleh Kreator</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card clay-card" id="testi-1">
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Clayworld benar-benar mengubah cara aku mendesain. Asetnya keren banget dan mudah dikustomisasi!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background: hsl(200,80%,80%);">A</div>
+          <div>
+            <strong>Alika Putri</strong>
+            <span>UI/UX Designer</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card clay-card featured-testi" id="testi-2">
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Saya pakai ini untuk proyek branding klien dan hasilnya luar biasa. Klien langsung jatuh cinta sama style clay-nya!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background: hsl(340,80%,82%);">R</div>
+          <div>
+            <strong>Rafi Mahendra</strong>
+            <span>Brand Designer</span>
+          </div>
+        </div>
+        <div class="testi-img-wrapper">
+          <img src="assets/clay_character.jpg" alt="Clay mascot" class="testi-mascot" />
+        </div>
+      </div>
+      <div class="testi-card clay-card" id="testi-3">
+        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testi-text">"Komunitas Clayworld sangat supportif. Banyak inspirasi dan resource yang bisa dipelajari setiap hari."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background: hsl(150,70%,78%);">S</div>
+          <div>
+            <strong>Sari Dewi</strong>
+            <span>Illustrator</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="cta-inner clay-card">
+      <div class="cta-blobs">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+      </div>
+      <div class="cta-content">
+        <div class="cta-mascot">
+          <img src="assets/clay_character.jpg" alt="Clay mascot waving" />
+        </div>
+        <div class="cta-text">
+          <p class="section-label">Siap Memulai?</p>
+          <h2 class="cta-title">Bergabunglah dengan 12,000+ Kreator</h2>
+          <p class="cta-desc">Mulai perjalanan desainmu bersama Clayworld. Gratis selamanya untuk aset dasar.</p>
+          <div class="cta-actions">
+            <a href="#" class="clay-btn btn-primary" id="cta-signup-btn">
+              <span>Daftar Gratis</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="clay-btn btn-ghost" id="cta-premium-btn">Lihat Premium →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <span class="logo-clay">🧸</span>
+          <span class="logo-text">Clayworld</span>
+        </a>
+        <p>Membawa kesenangan dan kelembutan ke dunia desain digital.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Produk</h4>
+          <ul>
+            <li><a href="#">Aset Clay</a></li>
+            <li><a href="#">Palet Warna</a></li>
+            <li><a href="#">Komponen UI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Komunitas</h4>
+          <ul>
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Perusahaan</h4>
+          <ul>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Karier</a></li>
+            <li><a href="#">Kontak</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Clayworld. Dibuat dengan 🧸 dan cinta.</span>
+      <span>Privasi · Syarat · Cookie</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
