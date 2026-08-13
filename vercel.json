@@ -10,11 +10,16 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/$1",
+      "status": 200
+    },
+    {
+      "handle": "error"
+    },
+    {
+      "status": 404,
+      "dest": "/404.html"
     }
-  ],
-  "errors": [
-    { "statusCode": 404, "destination": "/404.html" }
   ],
   "headers": [
     {
