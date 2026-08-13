@@ -31,6 +31,26 @@
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- LOADING SCREEN -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-clay">
+        <div class="clay-bounce b1"></div>
+        <div class="clay-bounce b2"></div>
+        <div class="clay-bounce b3"></div>
+      </div>
+      <p class="loader-text">Clayworld</p>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -42,8 +62,12 @@
         <li><a href="#features" class="nav-link">Fitur</a></li>
         <li><a href="#gallery" class="nav-link">Galeri</a></li>
         <li><a href="#testimonials" class="nav-link">Review</a></li>
+        <li><a href="#pricing" class="nav-link">Harga</a></li>
         <li><a href="#cta" class="nav-cta-btn">Mulai Gratis</a></li>
       </ul>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode" title="Toggle Dark Mode">
+        <span class="toggle-icon">🌙</span>
+      </button>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -56,6 +80,7 @@
       <li><a href="#features" class="mob-link">Fitur</a></li>
       <li><a href="#gallery" class="mob-link">Galeri</a></li>
       <li><a href="#testimonials" class="mob-link">Review</a></li>
+      <li><a href="#pricing" class="mob-link">Harga</a></li>
       <li><a href="#cta" class="mob-link">Mulai Gratis</a></li>
     </ul>
   </div>
@@ -290,6 +315,134 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-header">
+      <p class="section-label">Pilih Paket</p>
+      <h2 class="section-title">Harga yang Jujur & Transparan</h2>
+      <p class="section-desc">Mulai gratis, upgrade kapan saja. Tidak ada biaya tersembunyi.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="clay-card pricing-card" id="price-free">
+        <div class="pricing-header">
+          <span class="pricing-icon">🌱</span>
+          <h3 class="pricing-name">Free</h3>
+          <div class="pricing-price"><span class="price-amount">Rp 0</span><span class="price-period">/bulan</span></div>
+          <p class="pricing-desc">Untuk pemula yang ingin menjelajahi dunia clay.</p>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="feat-check">✓</span> 50 Aset Clay dasar</li>
+          <li><span class="feat-check">✓</span> 5 Palet warna</li>
+          <li><span class="feat-check">✓</span> Lisensi personal</li>
+          <li><span class="feat-x">✗</span> Akses komunitas premium</li>
+          <li><span class="feat-x">✗</span> Aset eksklusif</li>
+        </ul>
+        <a href="#" class="clay-btn btn-secondary pricing-btn" id="btn-free">Mulai Gratis</a>
+      </div>
+
+      <!-- PRO (featured) -->
+      <div class="clay-card pricing-card pricing-featured" id="price-pro">
+        <div class="pricing-badge">✦ Terpopuler</div>
+        <div class="pricing-header">
+          <span class="pricing-icon">🚀</span>
+          <h3 class="pricing-name">Pro</h3>
+          <div class="pricing-price"><span class="price-amount">Rp 79K</span><span class="price-period">/bulan</span></div>
+          <p class="pricing-desc">Untuk desainer dan kreator profesional.</p>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="feat-check">✓</span> 300+ Aset Clay premium</li>
+          <li><span class="feat-check">✓</span> 50 Palet warna kurasi</li>
+          <li><span class="feat-check">✓</span> Lisensi komersial</li>
+          <li><span class="feat-check">✓</span> Akses komunitas premium</li>
+          <li><span class="feat-x">✗</span> Aset eksklusif custom</li>
+        </ul>
+        <a href="#" class="clay-btn btn-primary pricing-btn" id="btn-pro">Mulai Pro</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="clay-card pricing-card" id="price-premium">
+        <div class="pricing-header">
+          <span class="pricing-icon">💎</span>
+          <h3 class="pricing-name">Premium</h3>
+          <div class="pricing-price"><span class="price-amount">Rp 199K</span><span class="price-period">/bulan</span></div>
+          <p class="pricing-desc">Untuk tim dan agensi yang butuh segalanya.</p>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="feat-check">✓</span> 500+ Semua aset Clay</li>
+          <li><span class="feat-check">✓</span> Palet warna tak terbatas</li>
+          <li><span class="feat-check">✓</span> Lisensi komersial & tim</li>
+          <li><span class="feat-check">✓</span> Akses komunitas VIP</li>
+          <li><span class="feat-check">✓</span> Request aset custom</li>
+        </ul>
+        <a href="#" class="clay-btn btn-secondary pricing-btn" id="btn-premium">Mulai Premium</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-header">
+      <p class="section-label">Ada Pertanyaan?</p>
+      <h2 class="section-title">Yang Sering Ditanyakan</h2>
+    </div>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item clay-card" id="faq-1">
+        <button class="faq-question" aria-expanded="false">
+          <span>Apakah saya bisa menggunakan aset untuk proyek komersial?</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p>Ya! Semua aset di paket Pro dan Premium berlisensi komersial penuh. Kamu bebas menggunakannya untuk proyek klien, produk digital, hingga merchandise tanpa royalti tambahan.</p>
+        </div>
+      </div>
+
+      <div class="faq-item clay-card" id="faq-2">
+        <button class="faq-question" aria-expanded="false">
+          <span>Apakah ada uji coba gratis untuk paket Pro?</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tentu! Kami menyediakan trial 14 hari untuk paket Pro tanpa perlu kartu kredit. Cukup daftar dengan email dan nikmati semua fitur Pro secara gratis selama 2 minggu.</p>
+        </div>
+      </div>
+
+      <div class="faq-item clay-card" id="faq-3">
+        <button class="faq-question" aria-expanded="false">
+          <span>Format file apa saja yang tersedia?</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p>Aset tersedia dalam format PNG (transparan), SVG (vektor scalable), dan Figma Component. Semua resolusi tinggi hingga 4K untuk kebutuhan print maupun digital.</p>
+        </div>
+      </div>
+
+      <div class="faq-item clay-card" id="faq-4">
+        <button class="faq-question" aria-expanded="false">
+          <span>Bisakah saya upgrade atau downgrade paket kapan saja?</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p>Bisa! Kamu bisa upgrade atau downgrade paket kapan saja. Perubahan akan berlaku di siklus billing berikutnya. Tidak ada penalti atau biaya tersembunyi untuk perubahan paket.</p>
+        </div>
+      </div>
+
+      <div class="faq-item clay-card" id="faq-5">
+        <button class="faq-question" aria-expanded="false">
+          <span>Bagaimana cara request aset custom di paket Premium?</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-answer">
+          <p>Pengguna Premium bisa submit request aset melalui portal khusus di dashboard. Tim desainer kami akan membuat aset sesuai brief dalam 3–5 hari kerja. Setiap bulan kamu bisa submit hingga 5 request custom.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 

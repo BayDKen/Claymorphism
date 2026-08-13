@@ -1,47 +1,124 @@
 // ============================================
-//  CLAYWORLD — JavaScript Interactions
+//  CLAYWORLD v2 — JavaScript Interactions
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ---- NAVBAR SCROLL ----
+  // ============================================
+  //  1. LOADING SCREEN
+  // ============================================
+  const loader = document.getElementById('loader');
+  const hideLoader = () => {
+    setTimeout(() => loader?.classList.add('hidden'), 600);
+  };
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader);
+    setTimeout(hideLoader, 2500); // Fallback
+  }
+
+  // ============================================
+  //  2. DARK MODE TOGGLE
+  // ============================================
+  const darkToggle = document.getElementById('darkToggle');
+  const toggleIcon = darkToggle?.querySelector('.toggle-icon');
+  const html       = document.documentElement;
+
+  const applyTheme = (dark) => {
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    if (toggleIcon) toggleIcon.textContent = dark ? '☀️' : '🌙';
+  };
+
+  const savedDark = localStorage.getItem('clayworld-dark') === 'true';
+  applyTheme(savedDark);
+
+  darkToggle?.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    applyTheme(!isDark);
+    localStorage.setItem('clayworld-dark', String(!isDark));
+  });
+
+  // ============================================
+  //  3. SCROLL PROGRESS BAR
+  // ============================================
+  const progressBar = document.getElementById('scrollProgress');
+  const updateProgress = () => {
+    const scrolled = window.scrollY;
+    const total    = document.body.scrollHeight - window.innerHeight;
+    const pct      = total > 0 ? (scrolled / total) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+  };
+
+  // ============================================
+  //  4. BACK TO TOP
+  // ============================================
+  const backToTop = document.getElementById('backToTop');
+  const updateBackToTop = () => {
+    backToTop?.classList.toggle('visible', window.scrollY > 400);
+  };
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ============================================
+  //  NAVBAR + SCROLL HANDLER
+  // ============================================
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
+    navbar?.classList.toggle('scrolled', window.scrollY > 40);
+    updateProgress();
+    updateBackToTop();
+  }, { passive: true });
 
-  // ---- HAMBURGER MENU ----
-  const hamburger = document.getElementById('hamburger');
+  // ============================================
+  //  5. HAMBURGER MENU
+  // ============================================
+  const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
-  hamburger.addEventListener('click', () => {
+  hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
+    mobileMenu?.classList.toggle('open');
   });
-
-  // Close menu on link click
   document.querySelectorAll('.mob-link').forEach(link => {
     link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
+      hamburger?.classList.remove('open');
+      mobileMenu?.classList.remove('open');
     });
   });
 
-  // ---- INTERSECTION OBSERVER (Reveal animations) ----
-  const revealTargets = document.querySelectorAll(
-    '.feature-card, .testi-card, .gallery-card, .section-header, .stat-item'
-  );
-  
-  revealTargets.forEach((el, i) => {
-    el.classList.add('reveal');
-    const delayClass = `reveal-delay-${(i % 5) + 1}`;
-    el.classList.add(delayClass);
+  // ============================================
+  //  6. FAQ ACCORDION
+  // ============================================
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling?.classList.remove('open');
+      });
+
+      // Open clicked (if was closed)
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer?.classList.add('open');
+      }
+    });
   });
 
+  // ============================================
+  //  INTERSECTION OBSERVER (Reveal)
+  // ============================================
+  const revealTargets = document.querySelectorAll(
+    '.feature-card, .testi-card, .gallery-card, .section-header, .stat-item, .pricing-card, .faq-item'
+  );
+  revealTargets.forEach((el, i) => {
+    el.classList.add('reveal', `reveal-delay-${(i % 5) + 1}`);
+  });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -50,152 +127,113 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
   revealTargets.forEach(el => observer.observe(el));
 
-  // ---- SMOOTH PARALLAX HERO BLOBS ----
+  // ============================================
+  //  PARALLAX BLOBS
+  // ============================================
   const blobs = document.querySelectorAll('.blob');
   window.addEventListener('mousemove', (e) => {
     const cx = window.innerWidth  / 2;
     const cy = window.innerHeight / 2;
     const dx = (e.clientX - cx) / cx;
     const dy = (e.clientY - cy) / cy;
-
     blobs.forEach((blob, i) => {
-      const strength = (i + 1) * 14;
-      const offsetX =  dx * strength;
-      const offsetY =  dy * strength;
-      blob.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      const s = (i + 1) * 14;
+      blob.style.transform = `translate(${dx * s}px, ${dy * s}px)`;
     });
   });
 
-  // ---- HERO IMAGE PARALLAX ON SCROLL ----
+  // ============================================
+  //  HERO IMAGE PARALLAX
+  // ============================================
   const heroImg = document.getElementById('hero-img');
-  if (heroImg) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      if (scrolled < window.innerHeight) {
-        heroImg.style.transform = `translateY(${scrolled * 0.08}px)`;
-      }
-    });
-  }
+  window.addEventListener('scroll', () => {
+    if (heroImg && window.scrollY < window.innerHeight) {
+      heroImg.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+    }
+  }, { passive: true });
 
-  // ---- MAGNETIC BUTTONS ----
+  // ============================================
+  //  MAGNETIC BUTTONS
+  // ============================================
   document.querySelectorAll('.clay-btn').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const cx = rect.left + rect.width  / 2;
-      const cy = rect.top  + rect.height / 2;
-      const dx = (e.clientX - cx) * 0.2;
-      const dy = (e.clientY - cy) * 0.2;
+      const r  = btn.getBoundingClientRect();
+      const dx = (e.clientX - r.left - r.width  / 2) * 0.2;
+      const dy = (e.clientY - r.top  - r.height / 2) * 0.2;
       btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-3px)`;
     });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
+    btn.addEventListener('mouseleave', () => btn.style.transform = '');
   });
 
-  // ---- CLAY CARD TILT EFFECT ----
+  // ============================================
+  //  3D CARD TILT
+  // ============================================
   document.querySelectorAll('.clay-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width  / 2;
-      const cy = rect.height / 2;
-      const rotX = ((y - cy) / cy) * -6;
-      const rotY = ((x - cx) / cx) *  6;
-      card.style.transform = `
-        perspective(800px)
-        rotateX(${rotX}deg)
-        rotateY(${rotY}deg)
-        translateY(-6px) scale(1.012)
-      `;
+      const r    = card.getBoundingClientRect();
+      const rotX = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -6;
+      const rotY = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  6;
+      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.012)`;
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
+    card.addEventListener('mouseleave', () => card.style.transform = '');
   });
 
-  // ---- COUNTER ANIMATION (Stats) ----
-  function animateCounter(el, target, duration = 1500) {
-    let start = 0;
-    const suffix = el.textContent.replace(/[\d.]/g, '');
-    const numTarget = parseFloat(target);
-    const startTime = performance.now();
-
-    function update(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * numTarget);
-      el.textContent = current.toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  const statsObserver = new IntersectionObserver((entries) => {
+  // ============================================
+  //  COUNTER ANIMATION
+  // ============================================
+  const statsObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const text = el.textContent;
-        const num  = parseFloat(text.replace(/[^0-9.]/g, ''));
-        const suffix = text.replace(/[\d.,]/g, '');
-        if (!isNaN(num) && !el.dataset.animated) {
-          el.dataset.animated = true;
-          animateCounter(el, num, 1800);
-        }
-        statsObserver.unobserve(el);
+      if (!entry.isIntersecting) return;
+      const el  = entry.target;
+      const num = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+      const sfx = el.textContent.replace(/[\d.,]/g, '');
+      if (!isNaN(num) && !el.dataset.animated) {
+        el.dataset.animated = true;
+        const t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - t0) / 1800, 1);
+          el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * num).toLocaleString() + sfx;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
       }
+      statsObs.unobserve(el);
     });
   }, { threshold: 0.6 });
+  document.querySelectorAll('.stat-number').forEach(el => statsObs.observe(el));
 
-  document.querySelectorAll('.stat-number').forEach(el => statsObserver.observe(el));
+  // ============================================
+  //  MARQUEE PAUSE
+  // ============================================
+  const marqueeTrack = document.querySelector('.marquee-track');
+  const marqueeStrip = document.querySelector('.marquee-strip');
+  marqueeStrip?.addEventListener('mouseenter', () => marqueeTrack && (marqueeTrack.style.animationPlayState = 'paused'));
+  marqueeStrip?.addEventListener('mouseleave', () => marqueeTrack && (marqueeTrack.style.animationPlayState = 'running'));
 
-  // ---- FLOATING BADGE JITTER ON HOVER ----
+  // ============================================
+  //  FLOATING BADGES
+  // ============================================
   document.querySelectorAll('.floating-badge').forEach(badge => {
     badge.addEventListener('mouseenter', () => {
       badge.style.transform = 'scale(1.08)';
       badge.style.transition = 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1)';
     });
-    badge.addEventListener('mouseleave', () => {
-      badge.style.transform = '';
+    badge.addEventListener('mouseleave', () => badge.style.transform = '');
+  });
+
+  // ============================================
+  //  SMOOTH SCROLL
+  // ============================================
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
 
-  // ---- MARQUEE PAUSE ON HOVER ----
-  const marqueeTrack = document.querySelector('.marquee-track');
-  const marqueeStrip = document.querySelector('.marquee-strip');
-  if (marqueeStrip && marqueeTrack) {
-    marqueeStrip.addEventListener('mouseenter', () => {
-      marqueeTrack.style.animationPlayState = 'paused';
-    });
-    marqueeStrip.addEventListener('mouseleave', () => {
-      marqueeTrack.style.animationPlayState = 'running';
-    });
-  }
-
-  // ---- SMOOTH SCROLL for anchors ----
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // ---- GALLERY HOVER CURSOR EFFECT ----
-  const galCards = document.querySelectorAll('.gallery-card');
-  galCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.cursor = 'zoom-in';
-    });
-  });
-
-  console.log('%c🧸 Clayworld loaded!', 
+  console.log('%c🧸 Clayworld v2 loaded!',
     'color: hsl(205,80%,55%); font-size:16px; font-weight:bold; font-family:sans-serif;'
   );
 });
