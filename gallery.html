@@ -66,11 +66,16 @@
     }
     
     .masonry-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
+      column-count: 3;
+      column-gap: 24px;
+      width: 100%;
     }
+    @media (max-width: 1000px) { .masonry-grid { column-count: 2; } }
+    @media (max-width: 600px) { .masonry-grid { column-count: 1; } }
+
     .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 24px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       position: relative;
@@ -79,8 +84,7 @@
     }
     .masonry-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
       transition: transform 0.5s ease;
     }
