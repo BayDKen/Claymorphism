@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Halaman Tidak Ditemukan | Clayworld</title>
+  <meta name="description" content="Clayworld - Kumpulan aset 3D Claymorphism, ilustrasi, dan desain antarmuka bergaya clay yang estetik, lembut, dan gratis." />
+  <meta property="og:title" content="Clayworld | 3D Claymorphism Assets" />
+  <meta property="og:description" content="Koleksi aset 3D Claymorphism premium yang lembut, estetik, dan mudah dikustomisasi untuk proyek digital Anda." />
+  <meta property="og:image" content="https://claymorphism.vercel.app/assets/clay_hero.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="hsl(200, 85%, 78%)" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    .page-404 {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-404 {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .img-404 {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-clay);
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+    .title-404 {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .desc-404 {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 380px;
+    }
+    .actions-404 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .badge-404 {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: hsla(10,80%,92%,0.8);
+      color: hsl(10,60%,45%);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-clay">🧸</span>
+        <span class="logo-text">Clayworld</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#features"      class="nav-link">Fitur</a></li>
+        <li><a href="/#gallery"       class="nav-link">Galeri</a></li>
+        <li><a href="/#testimonials"  class="nav-link">Review</a></li>
+        <li><a href="/#pricing"       class="nav-link">Harga</a></li>
+        <li><a href="/#cta"           class="nav-cta-btn">Mulai Gratis</a></li>
+      </ul>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="/#features"     class="mob-link">Fitur</a></li>
+      <li><a href="/#gallery"      class="mob-link">Galeri</a></li>
+      <li><a href="/#testimonials" class="mob-link">Review</a></li>
+      <li><a href="/#pricing"      class="mob-link">Harga</a></li>
+      <li><a href="/#cta"          class="mob-link">Mulai Gratis</a></li>
+    </ul>
+  </div>
+
+  <!-- BG BLOBS -->
+  <div class="hero-bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- 404 CONTENT -->
+  <main class="page-404">
+    <div class="clay-card card-404">
+      <span class="badge-404">😢 Error 404</span>
+      <img loading="lazy" src="/assets/clay_404.jpg" alt="Clay mascot 404" class="img-404" />
+      <h1 class="title-404">Aduh, Halaman Ini Hilang!</h1>
+      <p class="desc-404">
+        Sepertinya halaman yang kamu cari sudah pindah, dihapus, atau memang tidak pernah ada.
+        Jangan sedih, yuk kembali ke beranda!
+      </p>
+      <div class="actions-404">
+        <a href="/" class="clay-btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Kembali ke Beranda</span>
+        </a>
+        <a href="/#features" class="clay-btn btn-secondary">Lihat Fitur</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Minimal JS for 404 — dark mode only
+    const darkToggle = document.getElementById('darkToggle');
+    const toggleIcon = darkToggle?.querySelector('.toggle-icon');
+    const html       = document.documentElement;
+    const applyTheme = (dark) => {
+      html.setAttribute('data-theme', dark ? 'dark' : 'light');
+      if (toggleIcon) toggleIcon.textContent = dark ? '☀️' : '🌙';
+    };
+    applyTheme(localStorage.getItem('clayworld-dark') === 'true');
+    darkToggle?.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      applyTheme(!isDark);
+      localStorage.setItem('clayworld-dark', String(!isDark));
+    });
+
+    // Hamburger
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger?.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu?.classList.toggle('open');
+    });
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

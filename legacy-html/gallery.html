@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri Aset | Clayworld</title>
+  <meta name="description" content="Clayworld - Kumpulan aset 3D Claymorphism, ilustrasi, dan desain antarmuka bergaya clay yang estetik, lembut, dan gratis." />
+  <meta property="og:title" content="Clayworld | 3D Claymorphism Assets" />
+  <meta property="og:description" content="Koleksi aset 3D Claymorphism premium yang lembut, estetik, dan mudah dikustomisasi untuk proyek digital Anda." />
+  <meta property="og:image" content="https://claymorphism.vercel.app/assets/clay_hero.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="hsl(200, 85%, 78%)" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    .gallery-page {
+      padding: 140px 24px 60px;
+      min-height: 80vh;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .gallery-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .gallery-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 8px 24px;
+      border-radius: 100px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: hsl(205, 80%, 55%);
+      color: #fff;
+      box-shadow: 0 4px 12px hsla(205, 80%, 55%, 0.4);
+    }
+    
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
+    }
+
+    .masonry-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      box-shadow: var(--shadow-clay);
+      aspect-ratio: 1 / 1;
+    }
+    .masonry-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .masonry-item:hover img {
+      transform: scale(1.05);
+    }
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, hsla(230,30%,15%,0.8) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .masonry-item:hover .masonry-overlay {
+      opacity: 1;
+    }
+    .masonry-title {
+      font-family: var(--font-head);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      transform: translateY(10px);
+      transition: transform 0.3s ease;
+    }
+    .masonry-item:hover .masonry-title {
+      transform: translateY(0);
+    }
+    .masonry-tag {
+      color: hsla(0,0%,100%,0.8);
+      font-size: 0.85rem;
+      transform: translateY(10px);
+      transition: transform 0.3s ease 0.05s;
+    }
+    .masonry-item:hover .masonry-tag {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- LOADING SCREEN -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-clay">
+        <div class="clay-bounce b1"></div>
+        <div class="clay-bounce b2"></div>
+        <div class="clay-bounce b3"></div>
+      </div>
+      <p class="loader-text">Clayworld</p>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-clay">🧸</span>
+        <span class="logo-text">Clayworld</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#features" class="nav-link">Fitur</a></li>
+        <li><a href="/gallery.html" class="nav-link active">Galeri</a></li>
+        <li><a href="/#pricing" class="nav-link">Harga</a></li>
+        <li><a href="/#cta" class="nav-cta-btn">Mulai Gratis</a></li>
+      </ul>
+      <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="gallery-page">
+    <div class="gallery-header reveal">
+      <h1 class="gallery-title">Eksplorasi Dunia Clay</h1>
+      <p class="gallery-desc">Temukan ratusan koleksi ilustrasi dan ikon 3D claymorphism untuk berbagai kebutuhan proyek desainmu.</p>
+      
+      <div class="filter-tabs">
+        <button class="filter-btn active">Semua</button>
+        <button class="filter-btn">Karakter</button>
+        <button class="filter-btn">Objek</button>
+        <button class="filter-btn">Ikon</button>
+      </div>
+    </div>
+    
+    <div class="masonry-grid">
+      
+      <div class="masonry-item reveal reveal-delay-1">
+        <img loading="lazy" src="/assets/clay_character.jpg" alt="Mascot">
+        <div class="masonry-overlay">
+          <span class="masonry-title">Maskot Lucu</span>
+          <span class="masonry-tag">Karakter</span>
+        </div>
+      </div>
+      
+      <div class="masonry-item reveal reveal-delay-2">
+        <img loading="lazy" src="/assets/clay_icons.jpg" alt="Icons">
+        <div class="masonry-overlay">
+          <span class="masonry-title">Set Ikon Bisnis</span>
+          <span class="masonry-tag">Ikon</span>
+        </div>
+      </div>
+      
+      <div class="masonry-item reveal reveal-delay-3">
+        <img loading="lazy" src="/assets/clay_hero.jpg" alt="Hero">
+        <div class="masonry-overlay">
+          <span class="masonry-title">Hero Banner Workspace</span>
+          <span class="masonry-tag">Objek</span>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal reveal-delay-4">
+        <img loading="lazy" src="/assets/clay_404.jpg" alt="Error 404">
+        <div class="masonry-overlay">
+          <span class="masonry-title">Karakter Sedih (404)</span>
+          <span class="masonry-tag">Karakter</span>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal reveal-delay-5">
+        <img loading="lazy" src="/assets/clay_character.jpg" alt="Mascot Alt" style="filter: hue-rotate(90deg);">
+        <div class="masonry-overlay">
+          <span class="masonry-title">Maskot Hijau</span>
+          <span class="masonry-tag">Karakter</span>
+        </div>
+      </div>
+
+      <div class="masonry-item reveal reveal-delay-1">
+        <img loading="lazy" src="/assets/clay_icons.jpg" alt="Icons Alt" style="filter: sepia(0.5);">
+        <div class="masonry-overlay">
+          <span class="masonry-title">Ikon Klasik</span>
+          <span class="masonry-tag">Ikon</span>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          <span class="logo-clay">🧸</span>
+          <span class="logo-text">Clayworld</span>
+        </a>
+        <p>Membawa kesenangan dan kelembutan ke dunia desain digital.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Produk</h4>
+          <ul>
+            <li><a href="/gallery.html">Aset Clay</a></li>
+            <li><a href="#">Palet Warna</a></li>
+          </ul>
+        </div>
+      
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; line-height: 1.4;">Info aset clay terbaru ke emailmu.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); window.showToast('Berhasil berlangganan!', '💌'); this.reset();">
+            <input type="email" placeholder="Email..." required class="clay-input" />
+            <button type="submit" class="clay-btn btn-primary" style="padding: 10px 16px; width: 100%; margin-top: 8px;">Daftar ✦</button>
+          </form>
+        </div>
+</div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Clayworld. Dibuat dengan 🧸 dan cinta.</span>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <script src="script.js"></script>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img src="" alt="Fullscreen image" class="lightbox-img" id="lightboxImg" />
+  </div>
+
+</body>
+</html>
