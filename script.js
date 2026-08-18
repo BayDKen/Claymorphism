@@ -348,6 +348,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  // ============================================
+  //  PHASE 2.5: LIGHTBOX
+  // ============================================
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  
+  if (lightbox && lightboxImg && lightboxClose) {
+    document.querySelectorAll('.masonry-item img, .gallery-card img').forEach(img => {
+      img.parentElement.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => lightboxImg.src = '', 300);
+    };
+    
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+  }
+
   console.log('%c🧸 Clayworld v2 loaded!',
     'color: hsl(205,80%,55%); font-size:16px; font-weight:bold; font-family:sans-serif;'
   );

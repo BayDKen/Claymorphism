@@ -122,7 +122,7 @@
     </div>
     <div class="hero-visual">
       <div class="hero-img-wrapper">
-        <img src="assets/clay_hero.jpg" alt="Clay shapes floating" class="hero-img" id="hero-img" />
+        <img loading="lazy" src="assets/clay_hero.jpg" alt="Clay shapes floating" class="hero-img" id="hero-img" />
         <div class="floating-badge badge-top">
           <span class="badge-icon">⭐</span>
           <span>4.9 Rating</span>
@@ -167,7 +167,7 @@
     <div class="features-grid">
       <div class="clay-card feature-card" id="feat-1">
         <div class="feature-icon-wrap" style="background: hsl(200, 90%, 88%);">
-          <img src="assets/clay_laptop.png" alt="Laptop clay icon" class="feat-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+          <img loading="lazy" src="assets/clay_laptop.png" alt="Laptop clay icon" class="feat-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
           <span class="feat-emoji" style="display:none;">💻</span>
         </div>
         <h3 class="feature-title">Desain Responsif</h3>
@@ -225,19 +225,19 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-card clay-card tall" id="gal-1">
-        <img src="assets/clay_hero.jpg" alt="Clay shapes collection" />
+        <img loading="lazy" src="assets/clay_hero.jpg" alt="Clay shapes collection" />
         <div class="gal-overlay">
           <span>Clay Shapes</span>
         </div>
       </div>
       <div class="gallery-card clay-card" id="gal-2">
-        <img src="assets/clay_character.jpg" alt="Clay character" />
+        <img loading="lazy" src="assets/clay_character.jpg" alt="Clay character" />
         <div class="gal-overlay">
           <span>Clay Character</span>
         </div>
       </div>
       <div class="gallery-card clay-card wide" id="gal-3">
-        <img src="assets/clay_icons.jpg" alt="Clay icon set" />
+        <img loading="lazy" src="assets/clay_icons.jpg" alt="Clay icon set" />
         <div class="gal-overlay">
           <span>Clay Icon Set</span>
         </div>
@@ -277,7 +277,7 @@
           </div>
         </div>
         <div class="testi-img-wrapper">
-          <img src="assets/clay_character.jpg" alt="Clay mascot" class="testi-mascot" />
+          <img loading="lazy" src="assets/clay_character.jpg" alt="Clay mascot" class="testi-mascot" />
         </div>
       </div>
       <div class="testi-card clay-card" id="testi-3">
@@ -303,7 +303,7 @@
       </div>
       <div class="cta-content">
         <div class="cta-mascot">
-          <img src="assets/clay_character.jpg" alt="Clay mascot waving" />
+          <img loading="lazy" src="assets/clay_character.jpg" alt="Clay mascot waving" />
         </div>
         <div class="cta-text">
           <p class="section-label">Siap Memulai?</p>
@@ -484,6 +484,15 @@
             <li><a href="#">Kontak</a></li>
           </ul>
         </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; line-height: 1.4;">Info aset clay terbaru ke emailmu.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); window.showToast('Berhasil berlangganan!', '💌'); this.reset();">
+            <input type="email" placeholder="Email..." required class="clay-input" />
+            <button type="submit" class="clay-btn btn-primary" style="padding: 10px 16px; width: 100%; margin-top: 8px;">Daftar ✦</button>
+          </form>
+        </div>
+
       </div>
     </div>
     <div class="footer-bottom">
@@ -499,5 +508,12 @@
   <div class="custom-cursor" id="customCursor"></div>
 
   <script src="script.js"></script>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img src="" alt="Fullscreen image" class="lightbox-img" id="lightboxImg" />
+  </div>
+
 </body>
 </html>

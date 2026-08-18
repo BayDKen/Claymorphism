@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Galeri Aset | Clayworld</title>
+  <meta name="description" content="Clayworld - Kumpulan aset 3D Claymorphism, ilustrasi, dan desain antarmuka bergaya clay yang estetik, lembut, dan gratis." />
+  <meta property="og:title" content="Clayworld | 3D Claymorphism Assets" />
+  <meta property="og:description" content="Koleksi aset 3D Claymorphism premium yang lembut, estetik, dan mudah dikustomisasi untuk proyek digital Anda." />
+  <meta property="og:image" content="https://claymorphism.vercel.app/assets/clay_hero.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
@@ -179,7 +186,7 @@
     <div class="masonry-grid">
       
       <div class="masonry-item reveal reveal-delay-1">
-        <img src="/assets/clay_character.jpg" alt="Mascot">
+        <img loading="lazy" src="/assets/clay_character.jpg" alt="Mascot">
         <div class="masonry-overlay">
           <span class="masonry-title">Maskot Lucu</span>
           <span class="masonry-tag">Karakter</span>
@@ -187,7 +194,7 @@
       </div>
       
       <div class="masonry-item reveal reveal-delay-2">
-        <img src="/assets/clay_icons.jpg" alt="Icons">
+        <img loading="lazy" src="/assets/clay_icons.jpg" alt="Icons">
         <div class="masonry-overlay">
           <span class="masonry-title">Set Ikon Bisnis</span>
           <span class="masonry-tag">Ikon</span>
@@ -195,7 +202,7 @@
       </div>
       
       <div class="masonry-item reveal reveal-delay-3">
-        <img src="/assets/clay_hero.jpg" alt="Hero">
+        <img loading="lazy" src="/assets/clay_hero.jpg" alt="Hero">
         <div class="masonry-overlay">
           <span class="masonry-title">Hero Banner Workspace</span>
           <span class="masonry-tag">Objek</span>
@@ -203,7 +210,7 @@
       </div>
 
       <div class="masonry-item reveal reveal-delay-4">
-        <img src="/assets/clay_404.jpg" alt="Error 404">
+        <img loading="lazy" src="/assets/clay_404.jpg" alt="Error 404">
         <div class="masonry-overlay">
           <span class="masonry-title">Karakter Sedih (404)</span>
           <span class="masonry-tag">Karakter</span>
@@ -211,7 +218,7 @@
       </div>
 
       <div class="masonry-item reveal reveal-delay-5">
-        <img src="/assets/clay_character.jpg" alt="Mascot Alt" style="filter: hue-rotate(90deg);">
+        <img loading="lazy" src="/assets/clay_character.jpg" alt="Mascot Alt" style="filter: hue-rotate(90deg);">
         <div class="masonry-overlay">
           <span class="masonry-title">Maskot Hijau</span>
           <span class="masonry-tag">Karakter</span>
@@ -219,7 +226,7 @@
       </div>
 
       <div class="masonry-item reveal reveal-delay-1">
-        <img src="/assets/clay_icons.jpg" alt="Icons Alt" style="filter: sepia(0.5);">
+        <img loading="lazy" src="/assets/clay_icons.jpg" alt="Icons Alt" style="filter: sepia(0.5);">
         <div class="masonry-overlay">
           <span class="masonry-title">Ikon Klasik</span>
           <span class="masonry-tag">Ikon</span>
@@ -247,7 +254,16 @@
             <li><a href="#">Palet Warna</a></li>
           </ul>
         </div>
-      </div>
+      
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; line-height: 1.4;">Info aset clay terbaru ke emailmu.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); window.showToast('Berhasil berlangganan!', '💌'); this.reset();">
+            <input type="email" placeholder="Email..." required class="clay-input" />
+            <button type="submit" class="clay-btn btn-primary" style="padding: 10px 16px; width: 100%; margin-top: 8px;">Daftar ✦</button>
+          </form>
+        </div>
+</div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Clayworld. Dibuat dengan 🧸 dan cinta.</span>
@@ -261,5 +277,12 @@
   <div class="custom-cursor" id="customCursor"></div>
 
   <script src="script.js"></script>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img src="" alt="Fullscreen image" class="lightbox-img" id="lightboxImg" />
+  </div>
+
 </body>
 </html>
