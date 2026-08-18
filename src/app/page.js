@@ -105,7 +105,7 @@ export default function Home() {
     </div>
     <div className="hero-visual">
       <div className="hero-img-wrapper">
-        <img loading="lazy" src="assets/clay_hero.jpg" alt="Clay shapes floating" className="hero-img" id="hero-img" />
+        <img loading="lazy" src="/assets/clay_hero.jpg" alt="Clay shapes floating" className="hero-img" id="hero-img" />
         <div className="floating-badge badge-top">
           <span className="badge-icon">⭐</span>
           <span>4.9 Rating</span>
@@ -150,7 +150,7 @@ export default function Home() {
     <div className="features-grid">
       <div className="clay-card feature-card" id="feat-1">
         <div className="feature-icon-wrap" style={{background: "hsl(200, 90%, 88%)"}}>
-          <img loading="lazy" src="assets/clay_laptop.png" alt="Laptop clay icon" className="feat-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+          <img loading="lazy" src="/assets/clay_laptop.png" alt="Laptop clay icon" className="feat-img" onError={(e) => { e.target.style.display='none'; if(e.target.nextElementSibling) e.target.nextElementSibling.style.display='block'; }} />
           <span className="feat-emoji" style={{display: "none"}}>💻</span>
         </div>
         <h3 className="feature-title">Desain Responsif</h3>
@@ -208,19 +208,19 @@ export default function Home() {
     </div>
     <div className="gallery-grid">
       <div className="gallery-card clay-card tall reveal-left" id="gal-1">
-        <img loading="lazy" src="assets/clay_hero.jpg" alt="Clay shapes collection" />
+        <img loading="lazy" src="/assets/clay_hero.jpg" alt="Clay shapes collection" />
         <div className="gal-overlay">
           <span>Clay Shapes</span>
         </div>
       </div>
       <div className="gallery-card clay-card" id="gal-2">
-        <img loading="lazy" src="assets/clay_character.jpg" alt="Clay character" />
+        <img loading="lazy" src="/assets/clay_character.jpg" alt="Clay character" />
         <div className="gal-overlay">
           <span>Clay Character</span>
         </div>
       </div>
       <div className="gallery-card clay-card wide" id="gal-3">
-        <img loading="lazy" src="assets/clay_icons.jpg" alt="Clay icon set" />
+        <img loading="lazy" src="/assets/clay_icons.jpg" alt="Clay icon set" />
         <div className="gal-overlay">
           <span>Clay Icon Set</span>
         </div>
@@ -260,7 +260,7 @@ export default function Home() {
           </div>
         </div>
         <div className="testi-img-wrapper">
-          <img loading="lazy" src="assets/clay_character.jpg" alt="Clay mascot" className="testi-mascot" />
+          <img loading="lazy" src="/assets/clay_character.jpg" alt="Clay mascot" className="testi-mascot" />
         </div>
       </div>
       <div className="testi-card clay-card" id="testi-3">
@@ -286,7 +286,7 @@ export default function Home() {
       </div>
       <div className="cta-content">
         <div className="cta-mascot">
-          <img loading="lazy" src="assets/clay_character.jpg" alt="Clay mascot waving" />
+          <img loading="lazy" src="/assets/clay_character.jpg" alt="Clay mascot waving" />
         </div>
         <div className="cta-text">
           <p className="section-label">Siap Memulai?</p>
