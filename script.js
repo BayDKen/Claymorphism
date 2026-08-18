@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-  }, { threshold: 0.35, rootMargin: "-10% 0px -60% 0px" });
+  }, { threshold: 0, rootMargin: "-50% 0px -50% 0px" });
   
   sections.forEach(sec => navObserver.observe(sec));
 
