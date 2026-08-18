@@ -233,6 +233,86 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ============================================
+  //  PHASE 2: CUSTOM CURSOR
+  // ============================================
+  const customCursor = document.getElementById('customCursor');
+  if (customCursor) {
+    window.addEventListener('mousemove', (e) => {
+      // Use requestAnimationFrame for smoother performance
+      requestAnimationFrame(() => {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+      });
+    });
+    
+    document.querySelectorAll('a, button, input, textarea, select, .clay-card').forEach(el => {
+      el.addEventListener('mouseenter', () => customCursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => customCursor.classList.remove('hovering'));
+    });
+  }
+
+  // ============================================
+  //  PHASE 2: ACTIVE NAVBAR HIGHLIGHT
+  // ============================================
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === '#' + id || href === '/#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.35, rootMargin: "-10% 0px -60% 0px" });
+  
+  sections.forEach(sec => navObserver.observe(sec));
+
+  // ============================================
+  //  PHASE 2: TOAST NOTIFICATION
+  // ============================================
+  const toastContainer = document.getElementById('toast-container');
+  window.showToast = (msg, icon = '🧸') => {
+    if (!toastContainer) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<span class="toast-icon">${icon}</span><span>${msg}</span>`;
+    toastContainer.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 3000);
+  };
+
+  // Trigger toast on demo buttons
+  document.querySelectorAll('a[href="#cta"], a[href="#"], .btn-primary, .btn-secondary').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href');
+      if(href === '#') e.preventDefault();
+      
+      const text = btn.textContent.toLowerCase();
+      let msg = "Aksi berhasil dilakukan!";
+      let icon = "🎉";
+      
+      if(text.includes('pro')) { msg = "Paket Pro dipilih!"; icon = "🚀"; }
+      else if(text.includes('premium')) { msg = "Paket Premium VIP aktif!"; icon = "💎"; }
+      else if(text.includes('gratis')) { msg = "Selamat datang, pemula!"; icon = "🌱"; }
+      else if(text.includes('license')) { msg = "Lisensi berhasil diunduh."; icon = "🛡️"; }
+      
+      window.showToast(msg, icon);
+    });
+  });
+
   console.log('%c🧸 Clayworld v2 loaded!',
     'color: hsl(205,80%,55%); font-size:16px; font-weight:bold; font-family:sans-serif;'
   );
