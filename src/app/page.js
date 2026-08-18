@@ -46,7 +46,7 @@ export default function Home() {
         <li><a href="#gallery" className="nav-link">Galeri</a></li>
         <li><a href="#testimonials" className="nav-link">Review</a></li>
         <li><a href="#pricing" className="nav-link">Harga</a></li>
-        <li><a href="#cta" className="nav-cta-btn">Mulai Gratis</a></li>
+        <li><a href="/register" className="nav-cta-btn">Mulai Gratis</a></li>
       </ul>
       <button className="dark-toggle" id="darkToggle" aria-label="Toggle dark mode" title="Toggle Dark Mode">
         <span className="toggle-icon">🌙</span>
@@ -64,7 +64,7 @@ export default function Home() {
       <li><a href="#gallery" className="mob-link">Galeri</a></li>
       <li><a href="#testimonials" className="mob-link">Review</a></li>
       <li><a href="#pricing" className="mob-link">Harga</a></li>
-      <li><a href="#cta" className="mob-link">Mulai Gratis</a></li>
+      <li><a href="/register" className="mob-link">Mulai Gratis</a></li>
     </ul>
   </div>
 
@@ -80,7 +80,7 @@ export default function Home() {
       <h1 className="hero-title">Desain yang <span className="accent-text">Terasa Nyata</span> &amp; Menyenangkan</h1>
       <p className="hero-desc">Clayworld menghadirkan keindahan claymorphism yang lembut, bulat, dan penuh warna ke dalam karya digital Anda. Buat, eksplorasi, dan nikmati.</p>
       <div className="hero-actions">
-        <a href="#cta" className="clay-btn btn-primary" id="hero-cta-btn">
+        <a href="/register" className="clay-btn btn-primary" id="hero-cta-btn">
           <span>Mulai Sekarang</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
