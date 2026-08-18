@@ -66,25 +66,24 @@
     }
     
     .masonry-grid {
-      column-count: 3;
-      column-gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
       width: 100%;
     }
-    @media (max-width: 1000px) { .masonry-grid { column-count: 2; } }
-    @media (max-width: 600px) { .masonry-grid { column-count: 1; } }
 
     .masonry-item {
-      break-inside: avoid;
-      margin-bottom: 24px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       position: relative;
       cursor: pointer;
       box-shadow: var(--shadow-clay);
+      aspect-ratio: 1 / 1;
     }
     .masonry-item img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
@@ -179,7 +178,7 @@
     
     <div class="masonry-grid">
       
-      <div class="masonry-item reveal reveal-delay-1" style="aspect-ratio: 1/1;">
+      <div class="masonry-item reveal reveal-delay-1">
         <img src="/assets/clay_character.jpg" alt="Mascot">
         <div class="masonry-overlay">
           <span class="masonry-title">Maskot Lucu</span>
@@ -187,7 +186,7 @@
         </div>
       </div>
       
-      <div class="masonry-item reveal reveal-delay-2" style="aspect-ratio: 4/3;">
+      <div class="masonry-item reveal reveal-delay-2">
         <img src="/assets/clay_icons.jpg" alt="Icons">
         <div class="masonry-overlay">
           <span class="masonry-title">Set Ikon Bisnis</span>
@@ -195,7 +194,7 @@
         </div>
       </div>
       
-      <div class="masonry-item reveal reveal-delay-3" style="aspect-ratio: 3/4;">
+      <div class="masonry-item reveal reveal-delay-3">
         <img src="/assets/clay_hero.jpg" alt="Hero">
         <div class="masonry-overlay">
           <span class="masonry-title">Hero Banner Workspace</span>
@@ -203,7 +202,7 @@
         </div>
       </div>
 
-      <div class="masonry-item reveal reveal-delay-4" style="aspect-ratio: 1/1;">
+      <div class="masonry-item reveal reveal-delay-4">
         <img src="/assets/clay_404.jpg" alt="Error 404">
         <div class="masonry-overlay">
           <span class="masonry-title">Karakter Sedih (404)</span>
@@ -211,7 +210,7 @@
         </div>
       </div>
 
-      <div class="masonry-item reveal reveal-delay-5" style="aspect-ratio: 4/5;">
+      <div class="masonry-item reveal reveal-delay-5">
         <img src="/assets/clay_character.jpg" alt="Mascot Alt" style="filter: hue-rotate(90deg);">
         <div class="masonry-overlay">
           <span class="masonry-title">Maskot Hijau</span>
@@ -219,7 +218,7 @@
         </div>
       </div>
 
-      <div class="masonry-item reveal reveal-delay-1" style="aspect-ratio: 16/9;">
+      <div class="masonry-item reveal reveal-delay-1">
         <img src="/assets/clay_icons.jpg" alt="Icons Alt" style="filter: sepia(0.5);">
         <div class="masonry-overlay">
           <span class="masonry-title">Ikon Klasik</span>
