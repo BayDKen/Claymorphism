@@ -315,6 +315,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ============================================
+  //  PHASE 2: GALLERY FILTER
+  // ============================================
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.masonry-item');
+
+  if (filterBtns.length > 0 && galleryItems.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Set active state
+        btn.classList.add('active');
+        
+        const filterValue = btn.textContent.trim().toLowerCase();
+        
+        galleryItems.forEach(item => {
+          const tagElement = item.querySelector('.masonry-tag');
+          const tag = tagElement ? tagElement.textContent.trim().toLowerCase() : '';
+          
+          if (filterValue === 'semua' || tag === filterValue) {
+            item.style.display = 'block';
+            // Simple re-trigger of reveal animation
+            item.classList.remove('visible');
+            setTimeout(() => item.classList.add('visible'), 50);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
   console.log('%c🧸 Clayworld v2 loaded!',
     'color: hsl(205,80%,55%); font-size:16px; font-weight:bold; font-family:sans-serif;'
   );
