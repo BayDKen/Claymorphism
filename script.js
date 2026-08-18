@@ -111,13 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================
-  //  INTERSECTION OBSERVER (Reveal)
+  //  INTERSECTION OBSERVER (Reveal animations)
   // ============================================
   const revealTargets = document.querySelectorAll(
-    '.feature-card, .testi-card, .gallery-card, .section-header, .stat-item, .pricing-card, .faq-item'
+    '.feature-card, .testi-card, .gallery-card, .section-header, .stat-item, .pricing-card, .faq-item, .gallery-header, .masonry-item'
   );
   revealTargets.forEach((el, i) => {
-    el.classList.add('reveal', `reveal-delay-${(i % 5) + 1}`);
+    if (!el.classList.contains('reveal')) {
+      el.classList.add('reveal', `reveal-delay-${(i % 5) + 1}`);
+    }
   });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
