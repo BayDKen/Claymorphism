@@ -114,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
   //  INTERSECTION OBSERVER (Reveal animations)
   // ============================================
   const revealTargets = document.querySelectorAll(
-    '.feature-card, .testi-card, .gallery-card, .section-header, .stat-item, .pricing-card, .faq-item, .gallery-header, .masonry-item'
+    '.feature-card, .testi-card, .gallery-card, .section-header, .stat-item, .pricing-card, .faq-item, .gallery-header, .masonry-item, .reveal-left, .reveal-right, .reveal-scale, .reveal'
   );
   revealTargets.forEach((el, i) => {
-    if (!el.classList.contains('reveal')) {
+    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right') && !el.classList.contains('reveal-scale')) {
       el.classList.add('reveal', `reveal-delay-${(i % 5) + 1}`);
     }
   });
