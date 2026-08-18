@@ -1373,7 +1373,7 @@ ul { list-style: none; }
   background: hsla(205, 80%, 55%, 0.8);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 999999;
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background-color 0.2s;
   box-shadow: 0 4px 12px hsla(205, 80%, 55%, 0.4);
