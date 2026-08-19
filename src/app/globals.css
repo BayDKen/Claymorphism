@@ -11,6 +11,7 @@
   --lavender:  hsl(268, 72%, 82%);
   --peach:     hsl(28,  90%, 80%);
   --sky:       hsl(205, 80%, 80%);
+  --accent:    hsl(205, 80%, 55%);
   --yellow:    hsl(48,  95%, 80%);
   --pink:      hsl(340, 80%, 84%);
 
@@ -916,6 +917,7 @@ ul { list-style: none; }
    DARK MODE
    ========================================= */
 [data-theme="dark"] {
+  --accent:    hsl(205, 70%, 65%);
   --bg:         hsl(230, 18%, 12%);
   --bg-soft:    hsl(230, 18%, 10%);
   --surface:    hsl(230, 16%, 17%);
