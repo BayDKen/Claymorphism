@@ -1,6 +1,6 @@
 
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ClientLogic from "@/components/ClientLogic";
 
 export default function Home() {
@@ -46,7 +46,13 @@ export default function Home() {
         <li><a href="#gallery" className="nav-link">Galeri</a></li>
         <li><a href="#testimonials" className="nav-link">Review</a></li>
         <li><a href="#pricing" className="nav-link">Harga</a></li>
-        <li><a href="/register" className="nav-cta-btn">Mulai Gratis</a></li>
+        <li>
+          {isLoggedIn ? (
+            <a href="/dashboard" className="nav-cta-btn" style={{ background: 'var(--accent)', color: 'white' }}>Dashboard ✦</a>
+          ) : (
+            <a href="/register" className="nav-cta-btn">Mulai Gratis</a>
+          )}
+        </li>
       </ul>
       <button className="dark-toggle" id="darkToggle" aria-label="Toggle dark mode" title="Toggle Dark Mode">
         <span className="toggle-icon">🌙</span>
@@ -64,7 +70,13 @@ export default function Home() {
       <li><a href="#gallery" className="mob-link">Galeri</a></li>
       <li><a href="#testimonials" className="mob-link">Review</a></li>
       <li><a href="#pricing" className="mob-link">Harga</a></li>
-      <li><a href="/register" className="mob-link">Mulai Gratis</a></li>
+      <li>
+        {isLoggedIn ? (
+          <a href="/dashboard" className="mob-link" style={{ color: 'var(--accent)', fontWeight: 'bold' }}>Dashboard ✦</a>
+        ) : (
+          <a href="/register" className="mob-link">Mulai Gratis</a>
+        )}
+      </li>
     </ul>
   </div>
 
