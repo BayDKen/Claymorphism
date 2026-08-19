@@ -255,8 +255,8 @@ export default function ClientLogic() {
     });
     
     document.querySelectorAll('a, button, input, textarea, select, .clay-card').forEach(el => {
-      el.addEventListener('mouseenter', () => customCursor.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => customCursor.classList.remove('hovering'));
+      
+      
     });
   }
 
