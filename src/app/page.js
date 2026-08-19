@@ -4,10 +4,17 @@ import { useEffect, useState } from "react";
 import ClientLogic from "@/components/ClientLogic";
 
 export default function Home() {
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    
+    setMounted(true);
+    const userData = localStorage.getItem('clay_user');
+    if (userData) {
+      setIsLoggedIn(true);
+    }
   }, []);
+
 
   return (
     <>
@@ -47,7 +54,9 @@ export default function Home() {
         <li><a href="#testimonials" className="nav-link">Review</a></li>
         <li><a href="#pricing" className="nav-link">Harga</a></li>
         <li>
-          {isLoggedIn ? (
+          {!mounted ? (
+            <a href="/register" className="nav-cta-btn">Mulai Gratis</a>
+          ) : isLoggedIn ? (
             <a href="/dashboard" className="nav-cta-btn" style={{ background: 'var(--accent)', color: 'white' }}>Dashboard ✦</a>
           ) : (
             <a href="/register" className="nav-cta-btn">Mulai Gratis</a>
@@ -71,7 +80,9 @@ export default function Home() {
       <li><a href="#testimonials" className="mob-link">Review</a></li>
       <li><a href="#pricing" className="mob-link">Harga</a></li>
       <li>
-        {isLoggedIn ? (
+        {!mounted ? (
+           <a href="/register" className="mob-link">Mulai Gratis</a>
+        ) : isLoggedIn ? (
           <a href="/dashboard" className="mob-link" style={{ color: 'var(--accent)', fontWeight: 'bold' }}>Dashboard ✦</a>
         ) : (
           <a href="/register" className="mob-link">Mulai Gratis</a>
