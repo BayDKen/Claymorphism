@@ -22,29 +22,45 @@ export default function Login() {
   return (
     <>
       <ClientLogic />
-      <div className="section-header reveal" style={{ marginTop: '120px' }}>
-        <h2 className="section-title">Masuk ke <span className="accent-text">Clayworld</span></h2>
-        <p className="section-subtitle">Lanjutkan petualangan kreatif Anda.</p>
-      </div>
-      
-      <div className="pricing-container reveal-scale" style={{ maxWidth: '400px', margin: '0 auto 100px' }}>
-        <div className="pricing-card clay-card" style={{ width: '100%' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
+        
+        <div style={{ marginBottom: '30px', textAlign: 'center' }}>
+          <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '2rem' }}>🧸</span>
+            <span style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--text)' }}>Clayworld</span>
+          </Link>
+        </div>
+
+        <div className="pricing-card clay-card reveal-scale" style={{ width: '100%', maxWidth: '420px', padding: '40px 30px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: '800', marginBottom: '8px' }}>Selamat Datang</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Masuk untuk melanjutkan kreasi Anda.</p>
+          </div>
+
           <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div style={{ textAlign: 'left' }}>
-              <label style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '8px', display: 'block' }}>Email</label>
-              <input type="email" placeholder="nama@email.com" value={email} onChange={(e)=>setEmail(e.target.value)} required className="newsletter-input" style={{ width: '100%', padding: '12px 20px' }} />
+              <label style={{ color: 'var(--text)', fontWeight: '600', fontSize: '0.9rem', marginBottom: '8px', display: 'block' }}>Alamat Email</label>
+              <input type="email" placeholder="nama@email.com" value={email} onChange={(e)=>setEmail(e.target.value)} required className="newsletter-input" style={{ width: '100%', padding: '14px 20px', borderRadius: '12px' }} />
             </div>
-            <div style={{ textAlign: 'left' }}>
-              <label style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '8px', display: 'block' }}>Password</label>
-              <input type="password" placeholder="••••••••" value={password} onChange={(e)=>setPassword(e.target.value)} required className="newsletter-input" style={{ width: '100%', padding: '12px 20px' }} />
-            </div>
-            <button type="submit" className="clay-btn btn-primary" style={{ width: '100%', padding: '14px' }}>Masuk ✦</button>
             
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '16px' }}>
-              Belum punya akun? <Link href="/register" style={{ color: 'var(--accent)', fontWeight: 'bold', textDecoration: 'none' }}>Daftar di sini</Link>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ color: 'var(--text)', fontWeight: '600', fontSize: '0.9rem', marginBottom: '8px', display: 'block' }}>Kata Sandi</label>
+              <input type="password" placeholder="••••••••" value={password} onChange={(e)=>setPassword(e.target.value)} required className="newsletter-input" style={{ width: '100%', padding: '14px 20px', borderRadius: '12px' }} />
+            </div>
+            
+            <button type="submit" className="clay-btn btn-primary" style={{ width: '100%', padding: '16px', marginTop: '8px', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1rem' }}>
+              Masuk ✦
+            </button>
+            
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '20px', textAlign: 'center' }}>
+              Belum punya akun? <Link href="/register" style={{ color: 'var(--accent)', fontWeight: '700', textDecoration: 'none' }}>Daftar sekarang</Link>
             </p>
           </form>
         </div>
+
+        <Link href="/" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '30px', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <span>←</span> Kembali ke Beranda
+        </Link>
       </div>
     </>
   );
